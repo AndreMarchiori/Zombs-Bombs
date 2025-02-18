@@ -110,7 +110,7 @@ end
 
 function remGold(player: Player)
 	local data = playersData[player.UserId]
-	data.gold -= 100
+	data.gold -= 1000
 	PlayerLoadedRemoteEvent:FireClient(player, data)
 end
 
