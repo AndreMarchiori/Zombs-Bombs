@@ -93,7 +93,7 @@ local function onPlayerRemoving(player: Player)
 end
 
 function PlayerController.GetPlayers()
-    print(playersData)
+    return playersData
 end
 
 --region LISTENERS
