@@ -1,5 +1,5 @@
 {
-  "name": "project",
+  "name": "Zombs&Bombs v0.2.2",
   "tree": {
     "$className": "DataModel",
     "ServerScriptService": {
