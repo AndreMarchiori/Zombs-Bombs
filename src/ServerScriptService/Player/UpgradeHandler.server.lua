@@ -5,11 +5,11 @@ local RequestSpeedUpgradeRemoteEvent = ReplicatedStore.RequestSpeedUpgrade
 local PlayerLoadedRemoteEvent = ReplicatedStore.PlayerLoaded
 local ServerStorage = game:GetService("ServerStorage")
 local PlayerController = require(ServerStorage.Modules.PlayerController)
-local shop = require(ServerStorage.Modules.shop)
+local shop = require(ServerStorage.Modules.Shop)
 
 local UPGRADE_COST = 10
 
-local playersData = PlayerController.GetPlayers
+local playersData = PlayerController.GetPlayers()
 
 local function canPurchaseUpgrade(player: Player)
     local data = playersData[player.UserId]
@@ -26,8 +26,8 @@ local function onRequestPowerUpgrade(player:Player)
         return
     end
 
-	playersData[player.UserId] -= UPGRADE_COST
-	playersData[player.UserId] += 1
+	playersData[player.UserId].gold -= UPGRADE_COST
+	playersData[player.UserId].power += 1
 	
 	player:SetAttribute("Power", playersData[player.UserId].power)
 	PlayerLoadedRemoteEvent:FireClient(player, playersData[player.UserId])

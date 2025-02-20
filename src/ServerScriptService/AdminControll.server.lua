@@ -19,7 +19,6 @@ local AdminGuiTemplate = ServerStorage:WaitForChild("AdminGui")
 
 local function onPlayerAdded(player: Player)
 	player.CharacterAdded:Connect(function(char)
-		playersData[player.UserId] = {} -- Initialize the player's data table
 		for _, admin in admins do
 			if admin == player.UserId then
 				local adminGui = AdminGuiTemplate:Clone()
@@ -28,12 +27,6 @@ local function onPlayerAdded(player: Player)
 		end
 	end)
 end
-
-Players.PlayerRemoving:Connect(function(player)
-	if playersData[player.UserId] then
-		playersData[player.UserId] = nil -- Clean up the data for the leaving player
-	end
-end)
 
 for _, admin:IntValue in game.ServerStorage.Admins:GetChildren() do
 	if admin:IsA("IntValue") then
@@ -97,4 +90,3 @@ AdminGoldEditor.OnServerInvoke = addGold
 redAdminGoldEditor.OnServerInvoke = remGold
 
 Players.PlayerAdded:Connect(onPlayerAdded)
-

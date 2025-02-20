@@ -20,9 +20,5 @@ local function onEnemyDefeated(playerId:number)
 	PlayerLoadedRemoteEvent:FireClient(player, data)
 end
 
-
-
-
 -- Listeners
 EnemyDefeatedBindableEvent.Event:Connect(onEnemyDefeated)
-
