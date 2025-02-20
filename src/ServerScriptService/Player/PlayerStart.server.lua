@@ -13,7 +13,8 @@ local playersData = PlayerController.GetPlayers()
 local GOLD_EARNED_ON_ENEMY_DEFEAT = 10
 
 
-local function onEnemyDefeated(playerId:number)
+local function onEnemyDefeated(playerId:number, entity:string)
+	print(entity)
 	local data = playersData[playerId]
 	local player = Players:GetPlayerByUserId(playerId)
 	playersData[player.UserId].gold += GOLD_EARNED_ON_ENEMY_DEFEAT

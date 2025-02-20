@@ -6,6 +6,6 @@ local EnemyDefeatedBindableEvent = game:GetService("ServerStorage").Network.Enem
 local conexao :RBXScriptConnection
 conexao = humanoid.Died:Connect(function()
 	local playerId = humanoid:GetAttribute("LastDamageBy")
-	EnemyDefeatedBindableEvent:Fire(playerId)
+	EnemyDefeatedBindableEvent:Fire(playerId, zombie.Name)
 	conexao:Disconnect()
 end)

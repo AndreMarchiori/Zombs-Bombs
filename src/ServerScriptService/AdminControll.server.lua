@@ -12,7 +12,7 @@ local redAdminGoldEditor = ReplicatedStore.redAdminGoldEditor
 local PlayerController = require(ServerStorage.Modules.PlayerController)
 local PlayerLoadedRemoteEvent = ReplicatedStore.PlayerLoaded
 local admins = {}
-local playersData = PlayerController.GetPlayers
+local playersData = PlayerController.GetPlayers()
 
 -- Load the AdminGui from ReplicatedStorage
 local AdminGuiTemplate = ServerStorage:WaitForChild("AdminGui")
