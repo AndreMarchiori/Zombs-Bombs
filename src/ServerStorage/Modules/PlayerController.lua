@@ -9,8 +9,6 @@ local DataStoreService = game:GetService("DataStoreService")
 local ds = DataStoreService:GetDataStore("Zombies.02.1")
 local ReplicatedStore = game:GetService("ReplicatedStorage")
 local PlayerLoadedRemoteEvent = ReplicatedStore.PlayerLoaded
-local ServerStorage = game:GetService("ServerStorage")
-local ProductPurchased: BindableEvent = ServerStorage.Network.ProductPurchased
 
 --#endregion
 
@@ -98,15 +96,10 @@ function PlayerController.GetPlayers()
     return playersData
 end
 
-local function onProductPurchased(player :Player)
-    PlayerLoadedRemoteEvent:FireClient(player, playersData[player.UserId])
-end
-
 --region LISTENERS
 
 Players.PlayerAdded:Connect(onPlayerAdded)
 Players.PlayerRemoving:Connect(onPlayerRemoving)
-ProductPurchased.Event:Connect(onProductPurchased)
 --endregion
 
 return PlayerController
