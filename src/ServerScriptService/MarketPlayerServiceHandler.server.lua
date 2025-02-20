@@ -7,10 +7,14 @@ local PlayerLoadedRemoteEvent = ReplicatedStore.PlayerLoaded
 
 local playersData = PlayerController.GetPlayers()
 
+local Shop = require(ServerStorage.Modules.Shop)
+
 MarketplaceService.ProcessReceipt = function(receiptInfo)
     local player = Players:GetPlayerByUserId(receiptInfo.PlayerId)
-	if receiptInfo.ProductId == 2840318647  then
-		playersData[receiptInfo.PlayerId].gold += 1000
+
+	local product = Shop.products[tostring(receiptInfo.ProductId)]
+	if product then
+		playersData[receiptInfo.PlayerId].gold += product.reward
 
 		PlayerLoadedRemoteEvent:FireClient(player, playersData[receiptInfo.PlayerId])
 	end
