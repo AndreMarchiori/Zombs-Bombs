@@ -14,9 +14,12 @@ local GOLD_EARNED_ON_ENEMY_DEFEAT = 10
 
 
 local function onEnemyDefeated(playerId:number, entity:string)
-	print(entity)
+	local goldEarned = GOLD_EARNED_ON_ENEMY_DEFEAT
 	local data = playersData[playerId]
 	local player = Players:GetPlayerByUserId(playerId)
+	if entity == "Monster" then
+		goldEarned *= 300
+	end
 	playersData[player.UserId].gold += GOLD_EARNED_ON_ENEMY_DEFEAT
 	PlayerLoadedRemoteEvent:FireClient(player, data)
 end
