@@ -15,7 +15,6 @@ MarketplaceService.ProcessReceipt = function(receiptInfo)
 	local product = Shop.products[tostring(receiptInfo.ProductId)]
 	if product then
 		playersData[receiptInfo.PlayerId].gold += product.reward
-
 		PlayerLoadedRemoteEvent:FireClient(player, playersData[receiptInfo.PlayerId])
 	end
 end

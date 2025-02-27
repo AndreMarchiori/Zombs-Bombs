@@ -12,7 +12,6 @@ local partLocation = {
 	workspace.MobSpawner2.CFrame * CFrame.new(0, 10, 0),
 	workspace.MobSpawner3.CFrame * CFrame.new(0, 10, 0)
 }
-local debouncing = {}
 
 -- Contantes
 local ENEMY_POPULATION = 15
@@ -25,8 +24,6 @@ local function spawnZombie()
 	newZombie.Parent = spawnedEnemies
 	-- move o newZombie para em cima da partLocation
 	newZombie.HumanoidRootPart.CFrame = partLocation[math.random(1, 3)] * CFrame.new(math.random(-15, 15), 5, math.random(-15, 15))
-
-	local humanoid = newZombie:FindFirstChildOfClass("Humanoid")
 end
 
 local function spawnMonster()

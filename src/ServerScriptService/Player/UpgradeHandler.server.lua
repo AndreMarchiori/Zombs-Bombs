@@ -6,8 +6,9 @@ local PlayerLoadedRemoteEvent = ReplicatedStore.PlayerLoaded
 local ServerStorage = game:GetService("ServerStorage")
 local PlayerController = require(ServerStorage.Modules.PlayerController)
 local shop = require(ServerStorage.Modules.Shop)
+local UpgradeRequested:BindableEvent = ServerStorage.Network.UpgradeRequested
 
-local UPGRADE_COST = 10
+local UPGRADE_COST = 20
 
 local playersData = PlayerController.GetPlayers()
 
@@ -30,7 +31,7 @@ local function onRequestPowerUpgrade(player:Player)
 	playersData[player.UserId].power += 1
 	
 	player:SetAttribute("Power", playersData[player.UserId].power)
-	PlayerLoadedRemoteEvent:FireClient(player, playersData[player.UserId])
+	UpgradeRequested:Fire(player)
 end
 
 local function onRequestSpeedUpgrade(player:Player)
@@ -47,7 +48,7 @@ local function onRequestSpeedUpgrade(player:Player)
 		humanoid.WalkSpeed = playersData[player.UserId].speed
 	end
 
-	PlayerLoadedRemoteEvent:FireClient(player, playersData[player.UserId])
+	UpgradeRequested:Fire(player)
 end
 
 RequestPowerUpgradeRemoteEvent.OnServerEvent:Connect(onRequestPowerUpgrade)
