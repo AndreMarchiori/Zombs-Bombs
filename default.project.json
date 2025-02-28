@@ -1,5 +1,5 @@
 {
-  "name": "project",
+  "name": "Zombs&Bombs v0.2.2",
   "tree": {
     "$className": "DataModel",
     "ServerScriptService": {
@@ -11,6 +11,11 @@
       "$className": "ServerStorage",
       "$ignoreUnknownInstances": true,
       "$path": "src/ServerStorage"
+    },
+    "Network":{
+      "$className": "Network",
+      "$ignoreUnknownInstances": true,
+      "$path": "src/ServerStorage/Network"
     },
     "StarterPlayer": {
       "$className": "StarterPlayer",
